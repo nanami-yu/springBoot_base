@@ -40,9 +40,9 @@ spring:
 
 
 baidu:
-  APP_ID: 23068276
-  API_KEY: rtfk4R5wtqtCVtjfSdfGOWVw
-  SECRET_KEY: 1CLvGHubCy3emFegXGKv3DQupn0WgGkE
+  APP_ID:
+  API_KEY:
+  SECRET_KEY:
 
 upload:
   suffix:

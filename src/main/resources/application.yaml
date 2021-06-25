@@ -1,0 +1,53 @@
+spring:
+  kafka:
+    bootstrap-servers: hadoop20:9092,hadoop20:9093
+    ###########【初始化生产者配置】###########
+    producer:
+      #重试次数
+      retries: 1
+      #ack级别 -1 0 1
+      acks: 1
+      #批量大小
+      batch-size: 16384
+      #等待时间
+      #linger-ms: 1
+      #缓冲区大小
+      buffer-memory: 33554432
+      #序列化  反序列化
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      #自定义分区器
+      #properties-partitioner-class: com.nanami.kafka.partitoner.MyPartitoner
+    ###########【初始化消费者配置】###########
+    consumer:
+      enable-auto-commit: true
+      auto-commit-interval: 1000
+      #消费者组
+      group-id: defaultConsumerGroup
+      # 当kafka中没有初始offset或offset超出范围时将自动重置offset
+      # earliest:重置为分区中最小的offset;
+      # latest:重置为分区中最新的offset(消费分区中新产生的数据);
+      # none:只要有一个分区不存在已提交的offset,就抛出异常;
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+  #文件上传大小设置
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 1000MB
+
+
+baidu:
+  APP_ID: 23068276
+  API_KEY: rtfk4R5wtqtCVtjfSdfGOWVw
+  SECRET_KEY: 1CLvGHubCy3emFegXGKv3DQupn0WgGkE
+
+upload:
+  suffix:
+    excel: .xls.xlsx
+    word: .doc.docx
+    pdf: .pdf
+    image: .jpg.jpeg.png.gif
+  path: C:/xieyunCode/pic
